@@ -9,10 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var string: String?
+    var string: String? = "When I order pizza, I always order marghertia"
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        returnNumberOfWords(in: string!)
         
         
     }
@@ -47,6 +51,40 @@ class ViewController: UIViewController {
         }
         
         return dataSet
+        
+    }
+    
+    func returnNumberOfWords(in string: String) -> Dictionary<String,Int> {
+        
+        let words = string.split(separator: " ")
+        
+        var dataSet = Dictionary<String, Int>()
+
+        for w in words {
+            
+            if !dataSet.keys.contains(String(w)) {
+                dataSet[String(w)] = 1
+                
+            } else {
+                
+                dataSet[String(w)]! += 1
+
+            }
+            
+  
+        }
+        
+        printWordsCount(wordDict: dataSet)
+        
+        return dataSet
+        
+    }
+    
+    func printWordsCount(wordDict: Dictionary<String,Int>) {
+        
+        for (k, v) in wordDict {
+            print("\(k): \(v)")
+        }
         
     }
 
