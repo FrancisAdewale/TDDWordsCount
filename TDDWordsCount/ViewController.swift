@@ -13,7 +13,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
     func returnEmptyDataStruct(in string: String) -> Dictionary<String,Int> {
@@ -33,11 +34,18 @@ class ViewController: UIViewController {
         
         for w in words {
             
-            dataSet[w.base] = 1
+            if !dataSet.keys.contains(String(w)) {
+                dataSet[String(w)] = 1
+                
+            } else {
+                
+                dataSet[String(w)]! += 1
+
+            }
             
+  
         }
         
-        print(dataSet)
         return dataSet
         
     }
