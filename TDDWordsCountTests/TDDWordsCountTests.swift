@@ -33,7 +33,7 @@ class TDDWordsCountTests: XCTestCase {
         
         //when
         
-        let emptyData = sut.countWords(in: sut.string!)
+        let emptyData = sut.returnEmptyDataStruct(in: sut.string!)
         
         //then
         
@@ -47,11 +47,15 @@ class TDDWordsCountTests: XCTestCase {
         
         //given
         
-        
+        sut.string = "Hello"
         
         //when
         
+        let data = sut.returnOneWordCount(in: sut.string!)
+        
         //then
+        
+        XCTAssertTrue(data.count == 1)
         
     }
     
